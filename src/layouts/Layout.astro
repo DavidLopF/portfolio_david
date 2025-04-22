@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>David López Forero – Portfolio</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-gray-900 text-gray-200">
+    <!-- Header -->
+    <header class="bg-gray-900 text-white">
+      <nav
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <h1 class="text-xl font-bold">David López</h1>
+        <a
+          href="https://www.linkedin.com/in/davidlopezforero/"
+          target="_blank"
+          class="hover:underline">LinkedIn</a
+        >
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer
+      class="bg-gray-900 text-gray-400 text-center py-6 mt-24
+           border-t border-gray-700"
+    >
+      © {new Date().getFullYear()} David López Forero. Todos los derechos
+      reservados.
+    </footer>
+  </body>
+</html>

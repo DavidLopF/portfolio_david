@@ -1,16 +1,71 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import ExperienceCard from "../components/ExperienceCard.jsx";
+import Hero from "../components/Hero.jsx";
+import About from "../components/About.jsx";
+import TechStack from "../components/TechStack.jsx";
 
+// Datos de experiencia profesional
+const jobs = [
+  {
+    title: "Engineer 2 – Alleycorp Sur",
+    period: "Dic 2023 – Actualidad · Remoto",
+    description:
+      "Desarrollo backend con Spring Boot y NestJS, arquitectura de software, despliegues en AWS y gestión remota de equipos.",
+  },
+  {
+    title: "Desarrollador Full Stack – Uno Web",
+    period: "Sep 2023 – Mar 2025 · Híbrido",
+    description:
+      "Spring Boot y Node.js; integración de servicios bancarios; liderazgo técnico y planificación de sprints.",
+  },
+  {
+    title: "Desarrollador Full Stack – Puntored",
+    period: "May 2022 – Sep 2023 · Remoto",
+    description:
+      "Integración de servicios financieros, pruebas con Jenkins/SonarQube, desarrollo frontend con Angular.",
+  },
+  {
+    title: "Desarrollador 2 – Universitas XXI",
+    period: "Ene 2022 – May 2022 · Remoto",
+    description:
+      "Soluciones en Node.js y Java, pruebas de rendimiento/accesibilidad, control de versiones con Git.",
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <!-- Hero -->
+  <Hero client:load />
+  
+  <!-- Sobre mí -->
+  <About client:visible />
+
+
+
+  <!-- Experiencia profesional -->
+  <section id="experiencia" class="bg-white dark:bg-gray-900 py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2
+        class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12"
+      >
+        Experiencia Profesional
+      </h2>
+
+      <div class="grid gap-8 md:grid-cols-2">
+        {
+          jobs.map((job) => (
+            <ExperienceCard
+              client:visible
+              title={job.title}
+              period={job.period}
+              description={job.description}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <TechStack client:visible />
+</Layout>
